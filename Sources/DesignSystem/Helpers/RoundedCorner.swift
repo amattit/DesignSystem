@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-enum RectCorner {
+public enum RectCorner {
     case topLeft, topRight, bottomLeft, bottomRight, allCorners
 }
 
-extension View {
+public extension View {
     
     // function for CornerRadius struct
     @available(iOS 13.0, *)
@@ -39,12 +39,17 @@ extension View {
 
 /// Custom shape with independently rounded corners
 @available(iOS 13, *)
-struct RoundedCorner: Shape {
+public struct RoundedCorner: Shape {
+    public init(radius: CGFloat = .infinity, corners: UIRectCorner = .allCorners) {
+        self.radius = radius
+        self.corners = corners
+    }
+    
 
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
 
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }

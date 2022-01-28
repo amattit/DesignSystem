@@ -8,8 +8,7 @@
 import SwiftUI
 
 public struct BRTextField: View {
-    
-    enum Style {
+    public enum Style {
         case defaultStyle, primary, disabled, success, warning, danger, info
     }
     
@@ -22,21 +21,21 @@ public struct BRTextField: View {
     
     // MARK: Inits
     
-    init(_ text: Binding<String>, placeholder: String, onCommit: @escaping ()->() = { }) {
+    public init(_ text: Binding<String>, placeholder: String, onCommit: @escaping ()->() = { }) {
         self._input = text
         self.placeholder = placeholder
         self.style = .defaultStyle
         self.commit = onCommit
     }
     
-    init(_ text: Binding<String>, placeholder: String, style: Style, onCommit: @escaping ()->() = { }) {
+    public init(_ text: Binding<String>, placeholder: String, style: Style, onCommit: @escaping ()->() = { }) {
         self._input = text
         self.placeholder = placeholder
         self.style = style
         self.commit = onCommit
     }
     
-    init(_ text: Binding<String>, placeholder: String, icon: Image, onCommit: @escaping ()->() = { }) {
+    public init(_ text: Binding<String>, placeholder: String, icon: Image, onCommit: @escaping ()->() = { }) {
         self._input = text
         self.placeholder = placeholder
         self.icon = icon
@@ -44,7 +43,7 @@ public struct BRTextField: View {
         self.commit = onCommit
     }
     
-    init(_ text: Binding<String>, placeholder: String, style: Style, icon: Image, onCommit: @escaping ()->() = { }) {
+    public init(_ text: Binding<String>, placeholder: String, style: Style, icon: Image, onCommit: @escaping ()->() = { }) {
         self._input = text
         self.placeholder = placeholder
         self.style = style

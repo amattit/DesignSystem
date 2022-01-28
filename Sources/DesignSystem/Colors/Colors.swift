@@ -12,34 +12,34 @@ extension Color {
     
     // MARK: Basic Colors
     
-    static let brBackground = Color("background", bundle: .module)
-    static let brBasic = Color("basic", bundle: .module)
-    static let brPrimary = Color("primary", bundle: .module)
+    public static let brBackground = Color("background", bundle: .module)
+    public static let brBasic = Color("basic", bundle: .module)
+    public static let brPrimary = Color("primary", bundle: .module)
     
     // MARK: Font Colors
     
     /// Standard Font Color
-    static let brFontStd = Color("font_std", bundle: .module)
+    public static let brFontStd = Color("font_std", bundle: .module)
     /// Hint Font Color
-    static let brFontHint = Color("font_hint", bundle: .module)
+    public static let brFontHint = Color("font_hint", bundle: .module)
     /// Disabled Font Color
-    static let brFontDisabled = Color("font_disabled", bundle: .module)
+    public static let brFontDisabled = Color("font_disabled", bundle: .module)
     /// Button Font Color
-    static let brFontBtn = Color("font_button", bundle: .module)
+    public static let brFontBtn = Color("font_button", bundle: .module)
     
     // MARK: Semantic Colors
     
-    static let brDanger = Color("danger", bundle: .module)
-    static let brInfo = Color("info", bundle: .module)
-    static let brSuccess = Color("success", bundle: .module)
-    static let brWarning = Color("warning", bundle: .module)
+    public static let brDanger = Color("danger", bundle: .module)
+    public static let brInfo = Color("info", bundle: .module)
+    public static let brSuccess = Color("success", bundle: .module)
+    public static let brWarning = Color("warning", bundle: .module)
     
     // MARK: State Colors
     
     /// Active State Color - Primary Style
-    static let brActivePrimary = Color("activePrimary", bundle: .module)
+    public static let brActivePrimary = Color("activePrimary", bundle: .module)
     /// Active State Color - Basic Style
-    static let brActiveBasic = Color("activeBasic", bundle: .module)
+    public static let brActiveBasic = Color("activeBasic", bundle: .module)
 }
 
 struct Color_Previews: PreviewProvider {

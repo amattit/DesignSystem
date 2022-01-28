@@ -8,6 +8,13 @@
 import SwiftUI
 
 public struct ButtonGroupStyle: ButtonStyle {
+    public init(sizesStyle: ButtonGroupStyle.SizeStyle, colorStyle: ButtonGroupStyle.Style, icon: Image? = nil, text: String = "") {
+        self.sizesStyle = sizesStyle
+        self.colorStyle = colorStyle
+        self.icon = icon
+        self.text = text
+    }
+    
     
     var sizesStyle: SizeStyle
     var colorStyle: Style

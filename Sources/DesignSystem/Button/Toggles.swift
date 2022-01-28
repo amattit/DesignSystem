@@ -8,8 +8,14 @@
 import SwiftUI
 
 public struct BRToggle: View {
+    public init(toggleState: Binding<Bool>, style: BRToggle.Style, text: String? = nil) {
+        self._toggleState = toggleState
+        self.style = style
+        self.text = text
+    }
     
-    enum Style {
+    
+    public enum Style {
         case defaultStyle, primary, disabled, success, warning, danger, info
     }
     

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Image {
+public extension Image {
     
     //MARK: Avatars
     

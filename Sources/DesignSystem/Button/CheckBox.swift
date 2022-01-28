@@ -8,8 +8,13 @@
 import SwiftUI
 
 public struct Checkbox: View {
-    
-    enum Style {
+    public init(checkboxState: Binding<Bool>, style: Checkbox.Style, text: String? = nil) {
+        self._checkboxState = checkboxState
+        self.style = style
+        self.text = text
+    }
+        
+    public enum Style {
         case defaultStyle, primary, disabled, success, warning, danger, info
     }
     

@@ -8,6 +8,12 @@
 import SwiftUI
 
 public struct BRRadioButton: View {
+    public init(isChecked: Bool, color: Color? = nil, text: String = "") {
+        self.isChecked = isChecked
+        self.color = color
+        self.text = text
+    }
+    
     var isChecked: Bool
     var color: Color?
     var text: String = ""

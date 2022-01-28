@@ -9,11 +9,16 @@ import SwiftUI
 
 // MARK: - Custom Button Styles
 
-struct BRButtonStyle: ButtonStyle {
+public struct BRButtonStyle: ButtonStyle {
+    public init(color: Color, style: BRButton.Style) {
+        self.color = color
+        self.style = style
+    }
+    
     var color: Color
     var style: BRButton.Style
     
-    func makeBody(configuration: ButtonStyle.Configuration) -> some View {
+    public func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         switch style {
         case .fill: return AnyView(FillButton(color: color, configuration: configuration))
         case .outline: return AnyView(OutlineButton(color: color, configuration: configuration))
@@ -76,16 +81,23 @@ struct BRButtonStyle: ButtonStyle {
 
 // MARK: - Usage
 
-extension Button {
+public extension Button {
     /// Changes the appearance of the button
     func style(_ style: BRButton.Style, color: Color) -> some View {
         self.buttonStyle(BRButtonStyle(color: color, style: style))
     }
 }
 
-struct BRButton: View {
+public struct BRButton: View {
+    public init(text: String? = nil, image: Image? = nil, style: BRButton.Style = .fill, color: Color = .brPrimary, action: @escaping () -> Void) {
+        self.text = text
+        self.image = image
+        self.style = style
+        self.color = color
+        self.action = action
+    }
     
-    enum Style {
+    public enum Style {
         case fill, outline, ghost
     }
     
@@ -96,7 +108,7 @@ struct BRButton: View {
     var action: () -> Void
     var textAndImage: Bool { text != nil && image != nil }
     
-    var body: some View {
+    public var body: some View {
         Button(action: action, label: {
             HStack() {
                 Spacer()

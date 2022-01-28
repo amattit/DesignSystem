@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension ButtonGroupStyle {
+public extension ButtonGroupStyle {
     enum SizeStyle {
         case giant, large, medium, small, tiny
         

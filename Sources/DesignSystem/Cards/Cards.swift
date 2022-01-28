@@ -7,14 +7,22 @@
 
 import SwiftUI
 
-struct Card: View {
-    var image: Image? = nil
-    var title: String
-    var subtitle: String = ""
-    var text: String
-    var caption: String = ""
+public struct Card: View {
+    public init(image: Image? = nil, title: String, subtitle: String = "", text: String, caption: String = "") {
+        self.image = image
+        self.title = title
+        self.subtitle = subtitle
+        self.text = text
+        self.caption = caption
+    }
     
-    var body: some View {
+    var image: Image?
+    var title: String
+    var subtitle: String
+    var text: String
+    var caption: String
+    
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             image?
                 .resizable()

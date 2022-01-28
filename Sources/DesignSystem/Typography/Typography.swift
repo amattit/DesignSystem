@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct BRTypography: ViewModifier {
     
-    enum Style {
+    public enum Style {
         
         /// Titles
         case h1, h2, h3, h4, h5, h6
@@ -24,7 +24,7 @@ public struct BRTypography: ViewModifier {
         case c1, c2
     }
     
-    var style: Style
+    public var style: Style
     
     public func body(content: Content) -> some View {
         switch style {
@@ -59,7 +59,7 @@ public struct BRTypography: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func brTypo(_ style: BRTypography.Style) -> some View {
         self
             .modifier(BRTypography(style: style))
