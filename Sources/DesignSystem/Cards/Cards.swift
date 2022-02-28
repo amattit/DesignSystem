@@ -126,22 +126,19 @@ public extension CustomCard where Footer == EmptyView {
     }
 }
 
-
 struct Cards_Previews: PreviewProvider {
     static let img = Image("bricks_banner")
     static let text = "A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way."
     
     static var previews: some View {
         Group {
-            CustomCard(header: { Text("Header") }, content: { Text("some text") }, footer: { Text("Footer") })
             CustomCard(content: {
                 VStack(alignment: .leading) {
                     Text("Content")
                     Text("Content 2")
-                    Circle()
-                        .frame(width: 5, height: 5)
                 }
             })
+            CustomCard(header: { Text("Header") }, content: { Text("some text") }, footer: { Text("Footer") })
             Card(image: nil, title: "Title", subtitle: "Subtitle", text: text, caption: "Caption")
             Card(image: img, title: "Title", subtitle: "Subtitle", text: text)
             Card(title: "Title", subtitle: "Subtitle", text: text)
