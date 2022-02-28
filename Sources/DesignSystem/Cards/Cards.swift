@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import XCTest
 
 public struct Card: View {
     public init(image: Image? = nil, title: String, subtitle: String = "", text: String, caption: String = "") {
@@ -24,9 +25,11 @@ public struct Card: View {
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            image?
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            image.map { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
             Text(title)
                 .brTypo(.h6)
                 .padding(.horizontal)
@@ -54,17 +57,65 @@ public struct Card: View {
     }
 }
 
+public struct CustomCard<Header: View, Content: View, Footer: View>: View {
+    private let header: () -> Header?
+    private let content: Content
+    private let footer: () -> Footer?
+    
+    public init(
+        header: @escaping () -> Header?,
+        content: @escaping () -> Content,
+        footer: @escaping () -> Footer?
+    ) {
+        self.header = header
+        self.content = content()
+        self.footer = footer
+    }
+    
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack { Spacer() }
+            headerView
+            content
+                .brTypo(.p1)
+                .opacity(0.8)
+                .padding(.horizontal)
+            footerView
+                .padding(.bottom)
+        }
+    }
+    
+    @ViewBuilder
+    private var headerView: some View {
+        header()
+            .brTypo(.h6)
+            .padding(.horizontal)
+            .padding(.top, 14)
+            .padding(.bottom, 6)
+    }
+    
+    @ViewBuilder
+    private var footerView: some View {
+        footer()
+            .brTypo(.c2)
+            .padding(.horizontal)
+            .padding(.top, 8)
+    }
+    
+}
+
 struct Cards_Previews: PreviewProvider {
     static let img = Image("bricks_banner")
     static let text = "A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way."
     
     static var previews: some View {
         Group {
-            Card(image: img, title: "Title", subtitle: "Subtitle", text: text, caption: "Caption")
+            CustomCard(header: { Text("Header") }, content: { Text("some text") }, footer: { Text("Footer") })
+            Card(image: nil, title: "Title", subtitle: "Subtitle", text: text, caption: "Caption")
             Card(image: img, title: "Title", subtitle: "Subtitle", text: text)
             Card(title: "Title", subtitle: "Subtitle", text: text)
             Card(title: "Title", text: text)
         }
-        .previewLayout(.fixed(width: 300, height: 430))
+        .previewLayout(.sizeThatFits)
     }
 }
