@@ -73,13 +73,14 @@ public struct CustomCard<Header: View, Content: View, Footer: View>: View {
     }
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack { Spacer() }
             headerView
             content
                 .brTypo(.p1)
                 .opacity(0.8)
                 .padding(.horizontal)
+                .padding(.vertical, 8)
             footerView
                 .padding(.bottom)
         }
@@ -90,7 +91,6 @@ public struct CustomCard<Header: View, Content: View, Footer: View>: View {
         header()
             .brTypo(.h6)
             .padding(.horizontal)
-            .padding(.top, 14)
             .padding(.bottom, 6)
     }
     
@@ -99,10 +99,33 @@ public struct CustomCard<Header: View, Content: View, Footer: View>: View {
         footer()
             .brTypo(.c2)
             .padding(.horizontal)
-            .padding(.top, 8)
     }
-    
 }
+
+public extension CustomCard where Header == EmptyView, Footer == EmptyView {
+    init(content: @escaping () -> Content) {
+        self.header = { EmptyView() }
+        self.content = content()
+        self.footer = { EmptyView() }
+    }
+}
+
+public extension CustomCard where Header == EmptyView {
+    init(content: @escaping () -> Content, footer: @escaping () -> Footer?) {
+        self.header = { EmptyView() }
+        self.content = content()
+        self.footer = footer
+    }
+}
+
+public extension CustomCard where Footer == EmptyView {
+    init(header: @escaping () -> Header?, content: @escaping () -> Content) {
+        self.header = header
+        self.content = content()
+        self.footer = { EmptyView() }
+    }
+}
+
 
 struct Cards_Previews: PreviewProvider {
     static let img = Image("bricks_banner")
@@ -111,6 +134,14 @@ struct Cards_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             CustomCard(header: { Text("Header") }, content: { Text("some text") }, footer: { Text("Footer") })
+            CustomCard(content: {
+                VStack(alignment: .leading) {
+                    Text("Content")
+                    Text("Content 2")
+                    Circle()
+                        .frame(width: 5, height: 5)
+                }
+            })
             Card(image: nil, title: "Title", subtitle: "Subtitle", text: text, caption: "Caption")
             Card(image: img, title: "Title", subtitle: "Subtitle", text: text)
             Card(title: "Title", subtitle: "Subtitle", text: text)
