@@ -54,3 +54,9 @@ public struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
+
+extension View {
+    func smoothingCornerRadius(_ radius: CGFloat) -> some View {
+        clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+    }
+}
