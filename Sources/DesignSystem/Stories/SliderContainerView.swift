@@ -14,7 +14,7 @@ public struct SliderContainerView: View {
     
     public init(slides: [Story.Slide]) {
         self.slides = slides
-        storyTimer = StoryTimer(items: slides.count, interval: 3.0)
+        storyTimer = StoryTimer(items: slides.count, interval: 8.0)
     }
     
     let slides: [Story.Slide]
