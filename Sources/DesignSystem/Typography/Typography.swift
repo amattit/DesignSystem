@@ -18,7 +18,7 @@ public struct BRTypography: ViewModifier {
         case s1, s2
         
         /// Paragraphs
-        case p1, p2
+        case p1, p2, p3
         
         /// Captions
         case c1, c2
@@ -45,10 +45,12 @@ public struct BRTypography: ViewModifier {
             .font(.system(size: 15, weight: .semibold))
         case .s2: return content
             .font(.system(size: 13, weight: .semibold))
-            
+        
         case .p1: return content
-            .font(.system(size: 15, weight: .regular))
+            .font(.system(size: 18, weight: .regular))
         case .p2: return content
+            .font(.system(size: 15, weight: .regular))
+        case .p3: return content
             .font(.system(size: 13, weight: .regular))
             
         case .c1: return content
