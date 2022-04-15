@@ -58,7 +58,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(.brBasic) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
@@ -77,7 +79,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(.brPrimary) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
@@ -95,7 +99,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(.brBasic) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
@@ -113,7 +119,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(Color.brBasic) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
@@ -131,7 +139,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(.brBasic) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
@@ -149,7 +159,9 @@ public struct BRTextField: View {
             ZStack(alignment: .leading) {
                 if input.isEmpty { Text(placeholder).foregroundColor(.brBasic) }
                 TextField("", text: $input, onEditingChanged: { editingChanged in
-                    self.focused = editingChanged
+                    DispatchQueue.main.async {
+                        self.focused = editingChanged
+                    }
                     print(editingChanged ? "TextField focused" : "TextField focus removed")
                 }, onCommit: commit).foregroundColor(.brFontStd)
             }
